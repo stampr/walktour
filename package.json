@@ -1,19 +1,16 @@
 {
   "name": "@stampr/walktour",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "Guided tour/walkthrough component for react",
-  "type": "module",
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/bundle.js",
+  "types": "dist/bundle.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "parcel demo/index.html --open",
-    "build-demo": "parcel build demo/index.html --out-dir docs --out-file demo.html --public-url /walktour/",
-    "prebuild": "rm -fr .parcel-cache",
-    "build": "parcel build",
+    "clean": "rm -fr ./dist",
+    "prebuild": "npm run clean",
+    "build": "webpack --config webpack.config.js",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o docs",
@@ -33,9 +30,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
-    "@parcel/packager-ts": "^2.5.0",
-    "@parcel/transformer-typescript-tsc": "^2.5.0",
-    "@parcel/transformer-typescript-types": "^2.5.0",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-knobs": "^5.2.5",
     "@storybook/addon-links": "^6.4.22",
@@ -50,11 +44,15 @@
     "enzyme-to-json": "^3.6.2",
     "jest": "^27.4.5",
     "jsdom": "^19.0.0",
-    "parcel": "^2.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "source-map-loader": "^3.0.1",
     "storybook": "^6.4.22",
     "ts-jest": "^27.1.4",
-    "typescript": "^4.6.4"
+    "ts-loader": "^9.2.9",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0"
   }
 }
