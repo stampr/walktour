@@ -33,6 +33,7 @@ export interface WalktourOptions {
   customNextFunc?: (tourLogic: WalktourLogic, fromTarget?: boolean) => void;
   customPrevFunc?: (tourLogic: WalktourLogic) => void;
   customCloseFunc?: (tourLogic: WalktourLogic) => void;
+  useMinimalStyles?: boolean;
   prevLabel?: string;
   nextLabel?: string;
   closeLabel?: string;

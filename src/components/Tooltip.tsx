@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WalktourLogic } from './Walktour';
-import { WalktourStyles, defaultStyles } from '../defaultstyles';
+import { WalktourStyles, defaultStyles, minimalStyles } from '../defaultstyles';
 
 interface TooltipProps extends WalktourLogic {
   styles?: WalktourStyles;
@@ -28,7 +28,7 @@ export function Tooltip(props: TooltipProps) {
     allSteps,
     styles,
   } = {
-    styles: defaultStyles,
+    styles: props.stepContent.useMinimalStyles ? minimalStyles : defaultStyles,
     ...props
   };
 
@@ -40,11 +40,11 @@ export function Tooltip(props: TooltipProps) {
   const nextDisabled: boolean = disableNext !== undefined ? disableNext : stepIndex + 1 === allSteps.length;
 
   return (
-    <div style={tooltipStyle}>
+    <div className="walktour-tooltip" style={tooltipStyle}>
       {customTitleRenderer
         ? customTitleRenderer(title, props)
         : (title &&
-          <div style={styles.title}>
+          <div className="walktour-tooltip--title" style={styles.title}>
             {title}
           </div>
         )
@@ -53,7 +53,7 @@ export function Tooltip(props: TooltipProps) {
       {customDescriptionRenderer
         ? customDescriptionRenderer(description, props)
         : (
-          <div style={styles.description}>
+          <div className="walktour-tooltip--description" style={styles.description}>
             {description}
           </div>
         )
@@ -62,15 +62,17 @@ export function Tooltip(props: TooltipProps) {
       {customFooterRenderer
         ? customFooterRenderer(props)
         : (
-          <div style={styles.footer}>
+          <div className="walktour-tooltip--footer" style={styles.footer}>
             <button 
-            onClick={() => close()} 
-            style={{...styles.tertiaryButton, ...disableClose && styles.disabledButton}}
-            disabled={disableClose}
+              className="walktour-tooltip--tertiary"
+              onClick={() => close()} 
+              style={{...styles.tertiaryButton, ...disableClose && styles.disabledButton}}
+              disabled={disableClose}
             >
               {closeLabel || "close"}
             </button>
             <button
+              className="walktour-tooltip--secondary"
               onClick={prev}
               disabled={prevDisabled}
               style={{...styles.secondaryButton, ...prevDisabled && styles.disabledButton}}
@@ -78,6 +80,7 @@ export function Tooltip(props: TooltipProps) {
               {prevLabel || "prev"}
             </button>
             <button
+              className="walktour-tooltip--primary"
               onClick={() => next()}
               disabled={nextDisabled}
               style={{...styles.primaryButton, ...nextDisabled && styles.disabledButton}}

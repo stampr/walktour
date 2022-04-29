@@ -77,3 +77,14 @@ export const defaultStyles: WalktourStyles = {
     cursor: "default"
   },
 }
+
+export const minimalStyles: WalktourStyles = {
+  tooltip: {},
+  footer: {},
+  title: {},
+  description: {},
+  primaryButton: {},
+  secondaryButton: {},
+  tertiaryButton: {},
+  disabledButton: {},
+}
