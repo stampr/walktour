@@ -1,9 +1,9 @@
 {
   "name": "@stampr/walktour",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "Guided tour/walkthrough component for react",
   "main": "dist/bundle.js",
-  "types": "dist/bundle.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
