@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alfrdmalr/walktour"
+    "url": "git://github.com/stampr/walktour.git"
   },
   "license": "MIT",
   "peerDependencies": {
